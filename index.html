@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Núcleo Central · La Cámara de los Cinco Desafíos</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="bg-grid" aria-hidden="true"></div>
+
+<header class="core-header">
+  <div class="header-inner">
+    <div class="header-title">
+      <span class="header-eyebrow">SISTEMA CENTRAL · RECUPERACIÓN DE ACCESO</span>
+      <h1>La Cámara de los Cinco Desafíos</h1>
+    </div>
+
+    <div class="header-right">
+      <div class="system-clock" id="system-clock" title="Reloj del hilo principal: si esto se detiene, la interfaz está congelada">
+        <span class="clock-dot" id="clock-dot"></span>
+        <span id="clock-value">00:00:00.0</span>
+      </div>
+      <div class="seals" id="seals" aria-label="Progreso de sellos del núcleo">
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container py-4" id="levels-container">
+
+  <!-- ============ NIVEL 1 ============ -->
+  <section class="level-card" data-level="1" id="level-1">
+    <div class="level-lock-overlay">
+      <svg viewBox="0 0 24 24" class="lock-icon"><path d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5zm-3 5a3 3 0 0 1 6 0v3H9V7z"/></svg>
+      <span>Sello sellado</span>
+    </div>
+    <div class="level-inner">
+      <div class="level-head">
+        <span class="level-num">01</span>
+        <div class="level-head-text">
+          <h2>El Guardián de la Ubicación</h2>
+          <p class="level-weight">Peso del desafío · 15%</p>
+        </div>
+      </div>
+      <p class="level-brief">El primer sello exige confianza: autoriza el acceso a tu posición para que el núcleo registre desde dónde llega la señal de recuperación.</p>
+
+      <div class="level-body">
+        <button class="btn btn-action" id="btn-locate">Escanear ubicación</button>
+
+        <div class="coord-display">
+          <div class="coord-box">
+            <span class="coord-label">Latitud</span>
+            <span class="coord-value" id="lat-value">—</span>
+          </div>
+          <div class="coord-box">
+            <span class="coord-label">Longitud</span>
+            <span class="coord-value" id="lng-value">—</span>
+          </div>
+        </div>
+
+        <div class="status-msg" id="nivel1-status" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NIVEL 2 ============ -->
+  <section class="level-card locked" data-level="2" id="level-2">
+    <div class="level-lock-overlay">
+      <svg viewBox="0 0 24 24" class="lock-icon"><path d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5zm-3 5a3 3 0 0 1 6 0v3H9V7z"/></svg>
+      <span>Completa el sello anterior</span>
+    </div>
+    <div class="level-inner">
+      <div class="level-head">
+        <span class="level-num">02</span>
+        <div class="level-head-text">
+          <h2>El Cartógrafo Perdido</h2>
+          <p class="level-weight">Peso del desafío · 15%</p>
+        </div>
+      </div>
+      <p class="level-brief">Traza el sector sobre el lienzo del núcleo y marca la posición recuperada en el sello anterior. Sin mapa no hay coordenada que valga.</p>
+
+      <div class="level-body">
+        <button class="btn btn-action" id="btn-draw-map">Generar mapa del sector</button>
+
+        <div class="canvas-wrap">
+          <canvas id="map-canvas" width="640" height="360"></canvas>
+        </div>
+
+        <div class="status-msg" id="nivel2-status" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NIVEL 3 ============ -->
+  <section class="level-card locked" data-level="3" id="level-3">
+    <div class="level-lock-overlay">
+      <svg viewBox="0 0 24 24" class="lock-icon"><path d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5zm-3 5a3 3 0 0 1 6 0v3H9V7z"/></svg>
+      <span>Completa el sello anterior</span>
+    </div>
+    <div class="level-inner">
+      <div class="level-head">
+        <span class="level-num">03</span>
+        <div class="level-head-text">
+          <h2>La Evidencia del Explorador</h2>
+          <p class="level-weight">Peso del desafío · 20%</p>
+        </div>
+      </div>
+      <p class="level-brief">El núcleo necesita prueba visual de que hay alguien real al otro lado. Activa la cámara y captura una evidencia.</p>
+
+      <div class="level-body">
+        <div class="camera-grid">
+          <div class="camera-pane">
+            <span class="pane-label">Transmisión en vivo</span>
+            <div class="pane-frame">
+              <video id="camera-feed" autoplay playsinline muted></video>
+              <canvas id="capture-canvas" class="d-none"></canvas>
+            </div>
+          </div>
+          <div class="camera-pane">
+            <span class="pane-label">Evidencia capturada</span>
+            <div class="pane-frame">
+              <div class="photo-placeholder" id="photo-placeholder">Sin evidencia aún</div>
+              <img id="captured-photo" class="d-none" alt="Fotografía capturada">
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-action" id="btn-start-camera">Activar cámara</button>
+          <button class="btn btn-action" id="btn-capture" disabled>Capturar evidencia</button>
+        </div>
+
+        <div class="status-msg" id="nivel3-status" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NIVEL 4 ============ -->
+  <section class="level-card locked" data-level="4" id="level-4">
+    <div class="level-lock-overlay">
+      <svg viewBox="0 0 24 24" class="lock-icon"><path d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5zm-3 5a3 3 0 0 1 6 0v3H9V7z"/></svg>
+      <span>Completa el sello anterior</span>
+    </div>
+    <div class="level-inner">
+      <div class="level-head">
+        <span class="level-num">04</span>
+        <div class="level-head-text">
+          <h2>El Núcleo de Procesamiento</h2>
+          <p class="level-weight">Peso del desafío · 25%</p>
+        </div>
+      </div>
+      <p class="level-brief">20,000 lecturas de temperatura y humedad esperan ser procesadas. El cálculo se delega a un Worker para que el panel nunca deje de responder.</p>
+
+      <div class="level-body">
+        <button class="btn btn-action" id="btn-run-n4">Simular 20,000 lecturas</button>
+
+        <div class="progress-wrap d-none" id="n4-progress-wrap">
+          <div class="progress">
+            <div class="progress-bar" id="n4-progress-bar" role="progressbar" style="width:0%"></div>
+          </div>
+          <span class="progress-label" id="n4-progress-label">Procesando en el Worker… 0%</span>
+        </div>
+
+        <div class="card stats-card d-none" id="n4-stats-card">
+          <div class="card-body">
+            <h3 class="stats-title">Estadísticas del sector</h3>
+            <div class="row g-3 stats-grid">
+              <div class="col-6 col-md-3 stat-box">
+                <span class="stat-label">Temp. promedio</span>
+                <span class="stat-value" id="n4-temp-avg">—</span>
+              </div>
+              <div class="col-6 col-md-3 stat-box">
+                <span class="stat-label">Temp. máx / mín</span>
+                <span class="stat-value" id="n4-temp-range">—</span>
+              </div>
+              <div class="col-6 col-md-3 stat-box">
+                <span class="stat-label">Humedad promedio</span>
+                <span class="stat-value" id="n4-hum-avg">—</span>
+              </div>
+              <div class="col-6 col-md-3 stat-box">
+                <span class="stat-label">Humedad máx / mín</span>
+                <span class="stat-value" id="n4-hum-range">—</span>
+              </div>
+            </div>
+            <p class="stats-meta" id="n4-meta"></p>
+          </div>
+        </div>
+
+        <div class="status-msg" id="nivel4-status" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NIVEL 5 ============ -->
+  <section class="level-card locked" data-level="5" id="level-5">
+    <div class="level-lock-overlay">
+      <svg viewBox="0 0 24 24" class="lock-icon"><path d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5zm-3 5a3 3 0 0 1 6 0v3H9V7z"/></svg>
+      <span>Completa el sello anterior</span>
+    </div>
+    <div class="level-inner">
+      <div class="level-head">
+        <span class="level-num">05</span>
+        <div class="level-head-text">
+          <h2>El Portal Cuántico</h2>
+          <p class="level-weight">Peso del desafío · 25%</p>
+        </div>
+      </div>
+      <p class="level-brief">250,000 registros corruptos por el colapso del sistema, algunos con valores negativos imposibles. Filtra el ruido y abre el portal final.</p>
+
+      <div class="level-body">
+        <button class="btn btn-action" id="btn-run-n5">Generar 250,000 registros</button>
+
+        <div class="progress-wrap d-none" id="n5-progress-wrap">
+          <div class="progress">
+            <div class="progress-bar" id="n5-progress-bar" role="progressbar" style="width:0%"></div>
+          </div>
+          <span class="progress-label" id="n5-progress-label">Procesando en el Worker… 0%</span>
+        </div>
+
+        <div class="card stats-card d-none" id="n5-stats-card">
+          <div class="card-body">
+            <h3 class="stats-title">Estadísticas del portal</h3>
+            <div class="row g-3 stats-grid">
+              <div class="col-6 col-md-3 stat-box">
+                <span class="stat-label">Registros válidos</span>
+                <span class="stat-value" id="n5-valid-count">—</span>
+              </div>
+              <div class="col-6 col-md-3 stat-box">
+                <span class="stat-label">Registros descartados</span>
+                <span class="stat-value" id="n5-discarded-count">—</span>
+              </div>
+              <div class="col-6 col-md-3 stat-box">
+                <span class="stat-label">Promedio general</span>
+                <span class="stat-value" id="n5-overall-avg">—</span>
+              </div>
+              <div class="col-6 col-md-3 stat-box">
+                <span class="stat-label">Tiempo de cómputo</span>
+                <span class="stat-value" id="n5-compute-time">—</span>
+              </div>
+            </div>
+
+            <div class="top-lists">
+              <div class="top-list">
+                <h4>Top 10 temperaturas</h4>
+                <ol id="n5-top-temp"></ol>
+              </div>
+              <div class="top-list">
+                <h4>Top 10 presiones</h4>
+                <ol id="n5-top-pres"></ol>
+              </div>
+            </div>
+
+            <button class="btn btn-action btn-export d-none" id="btn-export-json">Exportar resultados (JSON)</button>
+          </div>
+        </div>
+
+        <div class="status-msg" id="nivel5-status" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MENSAJE FINAL ============ -->
+  <section class="final-banner d-none" id="final-banner">
+    <h2>Acceso restaurado</h2>
+    <p>Los cinco sellos del núcleo han sido liberados. La ciudad inteligente vuelve a estar en línea.</p>
+  </section>
+
+</main>
+
+<footer class="core-footer">
+  <p>Núcleo de recuperación · DTW135 — Desarrollo y Técnicas de Aplicaciones Web · Universidad de El Salvador · Grupo 4  </p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/nivel1.js"></script>
+<script src="js/nivel2.js"></script>
+<script src="js/nivel3.js"></script>
+<script src="js/nivel4.js"></script>
+<script src="js/nivel5.js"></script>
+</body>
+</html>
