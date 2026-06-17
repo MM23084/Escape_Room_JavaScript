@@ -73,7 +73,12 @@ Este proyecto está bajo la licencia MIT. Ver el archivo `LICENSE` para más det
 
 ## 👨‍💻 Autor
 
-**MM23084**
+- **Ricardo Antonio Mora Morales - MM23084**  
+  [GitHub](https://github.com/MM23084)
+- **Emerson Albert Ponce Angel**
+- **Angel Josué Cardoza Gómez**
+- **Jose Gilberto Zaldana Castaneda**     
+
 
 ## 🐛 Reportar Bugs
 
